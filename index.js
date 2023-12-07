@@ -29,11 +29,20 @@ app.get('/users/:userid', (req, res) => {
     res.send(req.params.userid) // : utáni rész userid néven jön létre a backenden a request paramsben
     /* a : létrejött nem fix, az adott helyen jön létre, ez változhat
     Ahol nincs kettőspont, az fix dolog. */
+    //const userId = Number(req.params.userid) //ez és a következő sor is használható, ugyanazt az eredményt kapjuk
+    const userId = parseInt(req.params.userid)
+    if (isNaN(userId)) {
+        console.log('userId must be a number') 
+        console.log()
+    } else {
+        console.log('reading file...')
+    }
+    console.log(userId)
     
     /* beolvasom a ... fájlt */
     fs.readFile('text.txt', "utf8", (err, data) => { /* a paraméterek: fájl elérési útja/neve, kódolás, cb függvény, amiben 2 paramétert várunk: error object, data object */
         /* hibakezelés, ha nem tud lefutni a beolvasás */
-        if(err)
+        
 
 
         
